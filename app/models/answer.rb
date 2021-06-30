@@ -1,6 +1,6 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
     require 'csv'
-    has_many :answers
+    belongs_to :question
 
     def self.import(file)
         data = []
@@ -8,6 +8,6 @@ class Question < ApplicationRecord
             data << row.to_h.merge(created_at: Time.now, updated_at: Time.now)
         end
 
-        Question.insert_all(data)
+        Answer.insert_all(data)
     end
 end

@@ -4,5 +4,15 @@ Rails.application.routes.draw do
     collection do
       post :import
     end
+
+    member do
+      get :answers
+    end
+  end
+
+  resources :answers, only: [:index] do
+    collection do
+      post :import
+    end
   end
 end
